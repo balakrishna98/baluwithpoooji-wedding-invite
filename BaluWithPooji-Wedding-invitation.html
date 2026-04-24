@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Balakrishna & Lakshmi Poojitha | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold-dark: #A67C00;
+      --gold-med: #BF953F;
+      --gold-light: #FCF6BA;
+      --gold-border: rgba(191, 149, 63, 0.4);
+      --bg-color: #F8F6F0;
+      --text-main: #2A2C29;
+      --text-muted: #6B6D69;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      /* Subtle noise texture for premium paper feel */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* Page decorative frame */
+    .page-frame {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid var(--gold-border);
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .page-frame::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid rgba(191, 149, 63, 0.15);
+    }
+
+    h1,
+    h2,
+    h3,
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    /* Deity Image styling */
+    .deity-container {
+      margin-bottom: 3rem;
+      animation: fadeInDown 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .deity-image {
+      width: clamp(80px, 25vw, 140px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.05));
+    }
+
+    .tag {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--gold-med), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 500;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 9vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+      animation: fadeInUp 1.2s ease-out;
+      word-wrap: break-word;
+    }
+
+    .hero .ampersand {
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-style: italic;
+      display: inline-block;
+      margin: 0 0.8rem;
+      background: linear-gradient(135deg, #a67c00, #bf953f, #E2C275, #aa771c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      max-width: 550px;
+      line-height: 2;
+      color: var(--text-muted);
+      margin-bottom: 3.5rem;
+      animation: fadeInUp 1.4s ease-out;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: all 0.4s ease;
+      position: relative;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--gold-border);
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 2rem;
+      font-size: 0.75rem;
+      border-color: rgba(0, 0, 0, 0.15);
+      margin-top: 1rem;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(191, 149, 63, 0.05);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.5s ease;
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: scaleY(1);
+    }
+
+    .btn:hover {
+      border-color: var(--gold-med);
+      box-shadow: 0 10px 25px rgba(191, 149, 63, 0.15);
+    }
+
+    /* Sections */
+    .premium-section {
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      margin-bottom: 1rem;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 4.5rem;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    /* Countdown */
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      background: #FFFFFF;
+      padding: 4rem 2rem;
+      border: 1px solid var(--gold-border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03);
+    }
+
+    .count-box {
+      text-align: center;
+      min-width: 80px;
+      position: relative;
+    }
+
+    .count-box:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -1.5rem;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--gold-border);
+      opacity: 0.5;
+    }
+
+    .count-number {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: var(--gold-med);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .count-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .premium-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 4rem 2.5rem;
+      text-align: center;
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+    }
+
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid var(--gold-border);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .premium-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(191, 149, 63, 0.08);
+      border-color: rgba(191, 149, 63, 0.3);
+    }
+
+    .card-label {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.75rem;
+      color: var(--gold-med);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+    }
+
+    .card-details {
+      color: var(--text-muted);
+      line-height: 2.2;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    .card-details strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 220px;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--gold-border);
+      padding: 4px;
+      background: var(--bg-color);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(20%) contrast(90%);
+    }
+
+    /* Footer Section */
+    .footer {
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+
+    .footer-sub {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 4rem;
+      line-height: 2;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Enhancements */
+    @media (max-width: 768px) {
+      .page-frame {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+
+      .page-frame::before {
+        top: 3px;
+        left: 3px;
+        right: 3px;
+        bottom: 3px;
+      }
+
+      .hero {
+        padding: 4rem 1.5rem;
+      }
+
+      .premium-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .cards-grid {
+        gap: 2rem;
+      }
+
+      .premium-card {
+        padding: 3rem 1.5rem;
+      }
+
+      .countdown-wrapper {
+        gap: 2rem;
+        padding: 3rem 1.5rem;
+      }
+
+      .count-box:not(:last-child)::after {
+        right: -1rem;
+      }
+
+
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero .ampersand {
+        display: block;
+        margin: 0.2rem 0;
+      }
+
+      .countdown-wrapper {
+        gap: 1.5rem;
+      }
+
+      .count-box {
+        min-width: 60px;
+      }
+
+      .count-number {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .count-label {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+      }
+
+      .count-box:not(:last-child)::after {
+        right: -0.75rem;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* App Container for Single Page flow */
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1rem;
+      justify-content: center;
+    }
+
+    .hero {
+      min-height: auto;
+      padding: 2rem 0 1rem;
+    }
+
+    .deity-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .deity-image {
+      width: clamp(60px, 15vw, 90px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 7vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .ampersand {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      margin: 0 0.3rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .compact-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-wrapper {
+      padding: 1.5rem 1rem;
+      gap: 1rem;
+    }
+
+    .count-number {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .count-box {
+      min-width: 50px;
+    }
+
+    .count-box:not(:last-child)::after {
+      right: -0.5rem;
+    }
+
+    .count-label {
+      font-size: 0.6rem;
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .toggle-btn {
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      border: 1px solid var(--gold-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+    }
+
+    .toggle-btn.active {
+      background: rgba(191, 149, 63, 0.1);
+      color: var(--gold-dark);
+      border-color: var(--gold-med);
+      font-weight: 500;
+    }
+
+    .premium-card {
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .premium-card.hidden {
+      display: none;
+    }
+
+    .card-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-secondary {
+      margin-top: 0;
+      padding: 0.6rem 1rem;
+      font-size: 0.7rem;
+    }
+
+    .footer {
+      padding: 1rem 0;
+    }
+
+    .footer-msg {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .main-profile-container {
+      text-align: center;
+      margin: 1rem auto 1.5rem;
+    }
+    .main-profile-pic {
+      width: clamp(140px, 40vw, 220px);
+      height: clamp(140px, 40vw, 220px);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%; /* Focusses slightly towards the top for faces */
+      border: 4px solid var(--gold-med);
+      box-shadow: 0 15px 35px rgba(191, 149, 63, 0.15);
+    }
+
+    70% { box-shadow: 0 0 0 10px rgba(191, 149, 63, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0); }
+    }
+</style>
+</head>
+
+<body>
+  <div class="page-frame"></div>
+
+  <div class="app-container">
+    <section class="hero" id="top">
+      <div class="deity-container">
+        <img src="Downloads/pngwing.com.png" alt="Lord Ganesha" class="deity-image" />
+      </div>
+
+      <div class="tag">Wedding Invitation</div>
+      <div class="main-profile-container reveal">
+        <img src="Downloads/baluwithpooji.png" alt="Balakrishna & Lakshmi Poojitha" class="main-profile-pic" />
+      </div>
+      <h1>Balakrishna <span class="ampersand">&</span> Lakshmi Poojitha</h1>
+      <p class="subtitle">
+        Join us as we celebrate our wedding and reception. Grace us with your presence.
+      </p>
+    </section>
+
+    <section class="compact-section" id="countdown-section">
+      <div class="countdown-wrapper reveal">
+        <div class="count-box">
+          <div class="count-number" id="days">0</div>
+          <div class="count-label">Days</div>
+        </div>
+        <div class="count-box">
+          <div class="count-number" id="hours">0</div>
+          <div class="count-label">Hours</div>
+        </div>
+        <div class="count-box">
+          <div class="count-number" id="minutes">0</div>
+          <div class="count-label">Mins</div>
+        </div>
+        <div class="count-box">
+          <div class="count-number" id="seconds">0</div>
+          <div class="count-label">Secs</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="compact-section" id="details">
+
+
+      <div class="premium-card reveal" id="card-wedding">
+        <div class="card-label">The Wedding</div>
+        <div class="card-title">Fri, 8 May 2026</div>
+        <div class="card-details">
+          <strong>Time:</strong> 7:18 PM<br />
+          <strong>Venue:</strong> Mahalakshmi Complex and convention Hall<br />
+          <strong>Location:</strong> Chirala Rd, Parchoor, Andhra Pradesh 523169, India
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-secondary" target="_blank"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+-+Balu+%26+Poojitha&dates=20260508T191800/20260508T223000">Add
+            to Calendar</a>
+          <a class="btn btn-secondary" target="_blank"
+            href="https://maps.google.com/maps?q=Mahalakshmi+Complex+and+convention+Hall,Parchoor">View on Map</a>
+        </div>
+      </div>
+
+      <div class="premium-card reveal" id="card-reception">
+        <div class="card-label">The Reception</div>
+        <div class="card-title">Sat, 9 May 2026</div>
+        <div class="card-details">
+          <strong>Time:</strong> 12:00 Noon onwards<br />
+          <strong>Venue:</strong> Kapu Kalyana Mandapam<br />
+          <strong>Location:</strong> Bapatla
+        </div>
+        <div class="btn-group">
+          <a class="btn btn-secondary" target="_blank"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reception+-+Balu+%26+Poojitha&dates=20260509T120000/20260509T160000">Add
+            to Calendar</a>
+          <a class="btn btn-secondary" target="_blank"
+            href="https://maps.google.com/maps?q=Kapu+Kalyana+Mandapam,Bapatla">View on Map</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer reveal">
+      <div class="footer-msg">We await your presence</div>
+      <div class="copyright">
+        <span style="font-size: 0.7rem; opacity: 0.6;">BaluWithPooji</span>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    
+
+    const weddingDate = new Date('2026-05-08T19:18:00');
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) return;
+      document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById('hours').textContent = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      document.getElementById('minutes').textContent = Math.floor((diff / (1000 * 60)) % 60);
+      document.getElementById('seconds').textContent = Math.floor((diff / 1000) % 60);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+
+</html>
